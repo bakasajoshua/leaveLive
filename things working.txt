@@ -1,0 +1,19 @@
+Login
+	
+
+Payslip
+	Can view on browser
+	Can Download PDF
+Leave
+	Can apply
+	Can approve
+	Can view history upto last 10
+Requisitions
+	Can place a requisition
+		Filter while adding to cart. No repeat entries.
+	Can approve
+
+
+
+
+                                
