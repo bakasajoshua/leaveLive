@@ -12995,3 +12995,53 @@ INFO - 2017-01-14 17:11:44 --> Email Class Initialized
 INFO - 2017-01-14 17:11:44 --> Session: Class initialized using 'files' driver.
 INFO - 2017-01-14 17:11:44 --> Controller Class Initialized
 DEBUG - 2017-01-14 17:11:44 --> Home MX_Controller Initialized
+INFO - 2017-01-14 17:42:58 --> Config Class Initialized
+INFO - 2017-01-14 17:42:58 --> Hooks Class Initialized
+DEBUG - 2017-01-14 17:42:59 --> UTF-8 Support Enabled
+INFO - 2017-01-14 17:42:59 --> Utf8 Class Initialized
+INFO - 2017-01-14 17:42:59 --> URI Class Initialized
+INFO - 2017-01-14 17:42:59 --> Router Class Initialized
+INFO - 2017-01-14 17:42:59 --> Output Class Initialized
+INFO - 2017-01-14 17:42:59 --> Security Class Initialized
+DEBUG - 2017-01-14 17:42:59 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-14 17:42:59 --> Input Class Initialized
+INFO - 2017-01-14 17:42:59 --> Language Class Initialized
+INFO - 2017-01-14 17:42:59 --> Language Class Initialized
+INFO - 2017-01-14 17:42:59 --> Config Class Initialized
+INFO - 2017-01-14 17:42:59 --> Loader Class Initialized
+INFO - 2017-01-14 17:42:59 --> Helper loaded: url_helper
+INFO - 2017-01-14 17:42:59 --> Helper loaded: file_helper
+INFO - 2017-01-14 17:42:59 --> Database Driver Class Initialized
+INFO - 2017-01-14 17:42:59 --> Email Class Initialized
+INFO - 2017-01-14 17:42:59 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-14 17:42:59 --> Controller Class Initialized
+DEBUG - 2017-01-14 17:42:59 --> Home MX_Controller Initialized
+DEBUG - 2017-01-14 17:43:13 --> File loaded: C:\xampp\htdocs\leaveLive\application\modules/Home/views/index_v.php
+DEBUG - 2017-01-14 17:43:13 --> File loaded: C:\xampp\htdocs\leaveLive\application\views\template/template_v.php
+INFO - 2017-01-14 17:43:13 --> Final output sent to browser
+DEBUG - 2017-01-14 17:43:13 --> Total execution time: 15.1202
+INFO - 2017-01-14 17:43:13 --> Config Class Initialized
+INFO - 2017-01-14 17:43:13 --> Hooks Class Initialized
+DEBUG - 2017-01-14 17:43:13 --> UTF-8 Support Enabled
+INFO - 2017-01-14 17:43:13 --> Utf8 Class Initialized
+INFO - 2017-01-14 17:43:13 --> URI Class Initialized
+INFO - 2017-01-14 17:43:14 --> Router Class Initialized
+INFO - 2017-01-14 17:43:14 --> Output Class Initialized
+INFO - 2017-01-14 17:43:14 --> Security Class Initialized
+DEBUG - 2017-01-14 17:43:14 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-14 17:43:14 --> Input Class Initialized
+INFO - 2017-01-14 17:43:14 --> Language Class Initialized
+INFO - 2017-01-14 17:43:14 --> Language Class Initialized
+INFO - 2017-01-14 17:43:14 --> Config Class Initialized
+INFO - 2017-01-14 17:43:14 --> Loader Class Initialized
+INFO - 2017-01-14 17:43:14 --> Helper loaded: url_helper
+INFO - 2017-01-14 17:43:14 --> Helper loaded: file_helper
+INFO - 2017-01-14 17:43:14 --> Database Driver Class Initialized
+INFO - 2017-01-14 17:43:14 --> Email Class Initialized
+INFO - 2017-01-14 17:43:14 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-14 17:43:14 --> Controller Class Initialized
+DEBUG - 2017-01-14 17:43:14 --> Login MX_Controller Initialized
+DEBUG - 2017-01-14 17:43:14 --> File loaded: C:\xampp\htdocs\leaveLive\application\modules/Login/views/login_v.php
+DEBUG - 2017-01-14 17:43:14 --> File loaded: C:\xampp\htdocs\leaveLive\application\views\template/loginTemplate_v.php
+INFO - 2017-01-14 17:43:14 --> Final output sent to browser
+DEBUG - 2017-01-14 17:43:14 --> Total execution time: 0.2700
