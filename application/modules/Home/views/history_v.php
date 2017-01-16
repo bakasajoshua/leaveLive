@@ -27,12 +27,6 @@
                                         </thead>
                                         <tbody>
                                            <?php
-                                                function split_on($string, $num) {
-                                                    $length = strlen($string);
-                                                    $output[0] = substr($string, 0, $num);
-                                                    $output[1] = substr($string, $num, $length );
-                                                    return $output;
-                                                }
                                                 $i = 0;
                                                 $userLeaveApplications = json_decode($userLeaveApplications);
                                                 // print_r($userLeaveApplications);die;

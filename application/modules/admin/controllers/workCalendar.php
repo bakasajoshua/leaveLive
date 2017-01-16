@@ -7,9 +7,7 @@ class WorkCalendar extends MX_Controller {
 	{	
 		// echo "<pre>";
 		// print_r($this->session->userdata);die;
-
 		$this->isAdminLoggedIN();
-
 		$data['holidays'] = $this->getHolidays();
 		$data['content_view'] = "admin/workCalendar_v";
 		$this->load->view('template/template_v.php',$data);
@@ -32,12 +30,23 @@ class WorkCalendar extends MX_Controller {
 		));
 		$result = curl_exec($curl);
 		curl_close($curl);
-		print_r($result);
+		print_r($result);die;
+
+		if($result === "Deleted"){
+			$resp['message'] = "Successfully Deleted";
+			$resp['status'] = 0;
+		}else{
+			$resp['message'] = "Delete Failed";
+			$resp['status'] = 1;
+		}
+		echo json_encode($resp);
 	}
 
 	public function updatePublicHoliday(){
-		$year =  date('Y');
-		
+		print_r($_POST);die;
+		$year =  $_POST['newYear'];
+		$year = (int)$year;
+
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 		    CURLOPT_RETURNTRANSFER => 1,

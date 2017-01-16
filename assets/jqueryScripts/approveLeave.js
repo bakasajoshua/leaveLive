@@ -1,10 +1,11 @@
 $(document).ready(function(){
   //leave approval
     window.actOnRequest = function($rowID){
+      console.log($rowID);
       $requestID = $('#approveLeaveTable tr:eq('+$rowID+') td:eq(1)').text();
       $empNO = $('#approveLeaveTable tr:eq('+$rowID+') td:eq(2)').text();
       $leaveComment = $('#approveLeaveTable tr:eq('+$rowID+') td:eq(8)').text();
-
+      
       $("#leaveRequestID").val($requestID);
       $("#leaveAppliersID").val($empNO);          
       $("#leaveComment").val($leaveComment);  
@@ -14,6 +15,7 @@ $(document).ready(function(){
       $("#approveLeave").click(function(){
         $leaveRequestID = $("#leaveRequestID").val();
         $leaveComment = $("#leaveComment").val();
+        console.log($leaveRequestID+" request id and comment "+$leaveComment);
         var resp = confirm("Are you sure?");
 
         if (resp == true) {

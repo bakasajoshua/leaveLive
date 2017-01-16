@@ -1,6 +1,7 @@
 <?php
-	// $webServiceUrl = 'http://www.essdp.com:8080/Service.svc?wsdl';
-	$webServiceUrl = 'http://www.essdp2.com:8094/Service.svc?wsdl';//dev on .31
+	$webServiceUrl = 'http://www.essdp.com:8080/Service.svc?wsdl';//Live at Kippra
+	// $webServiceUrl = 'http://www.essservice.com:8081/Service.svc?wsdl';
+	// $webServiceUrl = 'http://www.essdp2.com:8094/Service.svc?wsdl';
 	
 	if(isset($_POST['action'])){
 		$action = $_POST['action'];
@@ -686,9 +687,9 @@
 			} catch (SoapFault $e) {				
 			    $res = "Error: {$e->faultstring}";
 			}
-			print_r($res);die;
-			echo($res->insertHolidayResult);	
+			echo($res->deleteHolidayResult);	
 		}else if($action = 'UPDATEPUBLICHOLIDAYS'){
+			print_r($_POST);die;
 			$year = $_POST['year'];
 			$client = new SoapClient($webServiceUrl);
 			try {

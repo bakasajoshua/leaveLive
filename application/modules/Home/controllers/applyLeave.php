@@ -280,7 +280,7 @@ class ApplyLeave extends MX_Controller {
 		$Message .= "Leave days applied for: ".$daysToApply."<br/>";
 		$Message .= "Start Date: ".$humanReadableStartDate."<br/>";
 		$Message .= "End Date: ".$humanReadableEndDate."<br/>";
-		$Message .= "Report Back On: ".$humanReadableReturnDate."<br/>";
+		$Message .= "Report Back ON: ".$humanReadableReturnDate."<br/>";
 
 		$Message .= $emailFooter;
 
@@ -306,9 +306,21 @@ class ApplyLeave extends MX_Controller {
 
 	public function getHolidaysInMnD(){
 		$holidaysAvailable = $this->getHolidays();
-		echo $holidaysAvailable;
-		// $holidaysAvailable = json_decode($holidaysAvailable);
-		// print_r($holidaysAvailable[0]->holidayDate);
+		//echo $holidaysAvailable;
+		$holidaysAvailable = json_decode($holidaysAvailable);
+		$holidays = array();
+		$holidaysContainer = array();
+
+		foreach ($holidaysAvailable as $key => $value) {
+			$holidayName = $value->holidayName;
+			$holidayDate = $value->holidayDate;
+			$holidayYear = $value->year;
+
+			$holidays = array($holidayName,$holidayDate,$holidayYear);
+			array_push($holidaysContainer,$holidays);
+		}
+
+		echo json_encode($holidaysContainer);
 	}
 }
 ?>

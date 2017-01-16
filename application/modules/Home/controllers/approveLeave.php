@@ -24,7 +24,7 @@ class ApproveLeave extends MX_Controller {
 	public function approveRequest(){
 		$RequestID = trim($_POST['RequestID']);
 		$leaveStatus = trim($_POST['leaveComment']);
-
+		
 		//checks if a comment was made
 		if(isset($_POST['respMessage']) && $_POST['respMessage'] != null){
 			$comment = $_POST['respMessage'];
@@ -67,7 +67,7 @@ class ApproveLeave extends MX_Controller {
             	break;
             }
         }
-        // print_r($status." ".$approversID);die;
+        // print_r($status." status ".$approversID." ".$comment." ".$RequestID);die;
 		//check the status of the request
 
 		// is cURL installed yet?
@@ -312,43 +312,17 @@ class ApproveLeave extends MX_Controller {
 			$AbsentDaysApplied = $this->session->userdata('daysApplied');
 			$to = $this->session->userdata('endDate');
 			$comment = $this->session->userdata('comment');
-
-			//format to date
-			$to = str_replace("/","",$to);
-			$to = substr($to, 0, strpos($to, " "));
-			if(strlen($to) == 7){
-                $to = str_split($to,2);
-                $month = $to[0];
-                $day = str_split($to[1],1);
-                $actualday = $day[0];
-                $year = $day[1]."".$to[2]."".$to[3];
-                $humanReadableToDate = $actualday."-".$month."-".$year;
-            }else{
-                $year = substr($to,4,5);
-	            $day = substr($to,2,2);
-	            $month = substr($to,0,2);
-		        $humanReadableToDate = $day."-".$month."-".$year;
-            }
-	        //format to date
-
-			//format from date
-			$from = str_replace("/","",$from);
-			$from = substr($from, 0, strpos($from, " "));
-			$humanReadableFromDate = 0;
-            if(strlen($from) == 7){
-                $From = str_split($from,2);
-                $month = $From[0];
-                $day = str_split($From[1],1);
-                $actualday = $day[0];
-                $year = $day[1]."".$From[2]."".$From[3];
-                $humanReadableFromDate = $actualday."-".$month."-".$year;
-            }else{
-                $year = substr($from,4,5);
-                $day = substr($from,2,2);
-                $month = substr($from,0,2);
-                $humanReadableFromDate = $day."-".$month."-".$year;
-            }
-	        //format from date
+            
+			//FROM DATE
+	        $FromDate = substr($from, 0, strpos($from, " "));
+	        $FromDate = explode("/", $FromDate);
+	        $humanReadableFromDate = $FromDate[1]."-".$FromDate[0]."-".$FromDate[2];
+	        //FROM DATE
+	        //TO DATE
+	        $ToDate = substr($to, 0, strpos($to, " "));
+	        $ToDate = explode("/", $ToDate);
+	        $humanReadableToDate = $ToDate[1]."-".$ToDate[0]."-".$ToDate[2];
+	        //TO DATE
 		}else{
 			$humanReadableToDate = 'N/A';
 			$humanReadableFromDate = 'N/A';
@@ -375,6 +349,7 @@ class ApproveLeave extends MX_Controller {
 		$sendMailresp = $this->phpMailerSendMail($FName, $LName, $subject, $finalMessage, $From, $to);
 		
 		$sendMailresp = json_decode($sendMailresp);
+		// print_r($sendMailresp);die;
 		
 		if($sendMailresp->status == 0){
 			$resp['message'] = "The leave request has been forwarded to the individual responsible. Please wait as we refresh this page.";

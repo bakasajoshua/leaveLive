@@ -18,8 +18,6 @@ class internalHolidays extends MX_Controller {
 	}
 
 	public function saveInternalHoliday(){
-		// print_r($_POST['holidays'][0]['value']);
-
 		$holidayName = $_POST['holidays'][0]['value'];
 		$holidayDate = $_POST['holidays'][1]['value'];
 
@@ -28,7 +26,7 @@ class internalHolidays extends MX_Controller {
 
 		$dayNmonth = $holidayDate[1]."-".$holidayDate[0];
 		$year = $holidayDate[2];
-		print_r($dayNmonth." ".$year);
+		// print_r($dayNmonth." ".$year);
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -46,11 +44,10 @@ class internalHolidays extends MX_Controller {
 		));
 		$result = curl_exec($curl);
 		curl_close($curl);
-
 		if($result === "Inserted"){
-			print_r("Successfully inserted");
+			echo("Successfully inserted");
 		}else{
-			print_r("Insert failed");
+			echo("Insert failed");
 		}
 		
 	}
