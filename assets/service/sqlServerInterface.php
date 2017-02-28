@@ -1,6 +1,8 @@
 <?php
-	// $webServiceUrl = 'http://www.essdp.com:8080/Service.svc?wsdl';
-	$webServiceUrl = 'http://www.essservice.com:8081/Service.svc?wsdl';//dev on .31
+
+	// $webServiceUrl = 'http://www.essdp.com:8080/Service.svc?wsdl';//Live at Kippra
+	 $webServiceUrl = 'http://www.essservice.com:8081/Service.svc?wsdl';
+	// $webServiceUrl = 'http://www.essdp2.com:8094/Service.svc?wsdl';
 	
 	if(isset($_POST['action'])){
 		$action = $_POST['action'];

@@ -12995,6 +12995,7 @@ INFO - 2017-01-14 17:11:44 --> Email Class Initialized
 INFO - 2017-01-14 17:11:44 --> Session: Class initialized using 'files' driver.
 INFO - 2017-01-14 17:11:44 --> Controller Class Initialized
 DEBUG - 2017-01-14 17:11:44 --> Home MX_Controller Initialized
+<<<<<<< HEAD
 INFO - 2017-01-14 17:42:58 --> Config Class Initialized
 INFO - 2017-01-14 17:42:58 --> Hooks Class Initialized
 DEBUG - 2017-01-14 17:42:59 --> UTF-8 Support Enabled
@@ -13045,3 +13046,5 @@ DEBUG - 2017-01-14 17:43:14 --> File loaded: C:\xampp\htdocs\leaveLive\applicati
 DEBUG - 2017-01-14 17:43:14 --> File loaded: C:\xampp\htdocs\leaveLive\application\views\template/loginTemplate_v.php
 INFO - 2017-01-14 17:43:14 --> Final output sent to browser
 DEBUG - 2017-01-14 17:43:14 --> Total execution time: 0.2700
+=======
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb

@@ -298,7 +298,10 @@
     <script>
       $(document).ready(function() {
         $(".overlay").hide();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
         //dashboard
         $getEntitlementsURL = "<?php echo base_url('home/home/getEntitlements'); ?>";
         //dashboard
@@ -425,6 +428,7 @@
                 $workingDays = 0;
                 $leavedays = $leavDaysArray['totalDays']+1;
                 $handleHolidayFallingOnWeekend = 0;
+<<<<<<< HEAD
                 $holidayCounter = 0;
                 while($k < $leavedays){
                   //startDate broken down
@@ -528,6 +532,61 @@
 
                     // $("#daysRemaining").val($remaingDays);
                     //compute remaining days
+=======
+                $kl = 0;
+                $holidayCounter = 0;
+                $holidaysWithinRange = 0;
+                $startDate = $("#startDate").val();
+                $endDate = $("#endDate").val();
+
+                $startDateArray = $startDate.split("/");
+                $endDateArray = $endDate.split("/");
+
+                $currentYear = new Date().getFullYear();
+                while($k < $leavedays){//loop through the leave days 
+                    //startDate broken down
+                    var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
+                    var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
+                    var y = newdate.getFullYear();
+                    //startDate broken down
+
+                    //put the broken up date together to get the day you applied. monday-sunday
+                    $t = new Date(y,(mm-1),dd);
+                    $dayOfWeek = $t.getDay();
+                    $dayOfWeek = parseInt($dayOfWeek);
+                    //put the broken up date together to get the day you applied. monday-sunday
+                    // console.log('Day of week sun-mon '+$dayOfWeek);
+                    if($dayOfWeek == 0 || $dayOfWeek == 6){//if the day of the week is a weekend, check the holidays that fall on this weekend
+                    
+                      console.log($holidays);
+                        $newdayvalue = parseInt(newdate.getDate()) + parseInt((1));
+                        //console.log("Current value of holidayCOunter "+$handleHolidayFallingOnWeekend+" increase counter by "+$holidayCounter);
+                        $handleHolidayFallingOnWeekend = $holidayCounter + $handleHolidayFallingOnWeekend;
+                        //console.log("$handleHolidayFallingOnWeekend new value"+$handleHolidayFallingOnWeekend);
+                        newdate.setDate($newdayvalue);  
+                    }else{//if the day of the week is a weekday, check the holidays that fall in the course of the week
+                      //increase working days by one
+                      $newdayvalue = parseInt(newdate.getDate()) + parseInt((1));
+                      newdate.setDate($newdayvalue);  
+                      
+                      $workingDays++;
+                      //increase day by one
+                    }
+                    //startDate broken down
+                    var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
+                    var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
+                    var y = newdate.getFullYear();
+                    //startDate broken down
+                    // console.log("New Date after adding 1 "+mm+"/"+dd+"/"+y);
+                    $k++;
+                }
+
+                $daysEntitled = $("#daysAvaliable").val();
+                // console.log($daysEntitled+" Days entitled ddd"+$workingDays);
+                if($workingDays > $daysEntitled){
+                    $message = "You have "+$daysEntitled+" leave days only.";
+                }else{  
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
                     $message = "OK";
                 }
                 $workingdays = $workingDays+parseInt($handleHolidayFallingOnWeekend);
@@ -535,7 +594,10 @@
                 return '{"workingDays":'+$workingDays+',"message":"'+$message+'","handleHolidayFallingOnWeekend":"'+$handleHolidayFallingOnWeekend+'"}';
           }
             //gets the holidays set in the system
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
             window.getHolidays = function(){
                 $.ajax({
                   url:$getHolidays,

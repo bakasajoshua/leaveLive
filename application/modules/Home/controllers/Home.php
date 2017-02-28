@@ -10,7 +10,7 @@ class Home extends MX_Controller {
 
 		$this->isLoggedIN();
 		$data['pendingRequests'] = $this->getPendingRequests();
-		echo($this->session->userdata('PersonID'));
+		//echo($this->session->userdata('PersonID'));
 		// echo "<pre>";print_r($data);die();
 		$data['content_view'] = "Home/index_v";
 		$this->load->view('template/template_v.php',$data);

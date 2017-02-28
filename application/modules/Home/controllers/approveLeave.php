@@ -24,7 +24,11 @@ class ApproveLeave extends MX_Controller {
 	public function approveRequest(){
 		$RequestID = trim($_POST['RequestID']);
 		$leaveStatus = trim($_POST['leaveComment']);
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
 		//checks if a comment was made
 		if(isset($_POST['respMessage']) && $_POST['respMessage'] != null){
 			$comment = $_POST['respMessage'];
@@ -67,7 +71,11 @@ class ApproveLeave extends MX_Controller {
             	break;
             }
         }
+<<<<<<< HEAD
         // print_r($status." ".$approversID);die;
+=======
+        // print_r($status." status ".$approversID." ".$comment." ".$RequestID);die;
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
 		//check the status of the request
 
 		// is cURL installed yet?
@@ -312,6 +320,7 @@ class ApproveLeave extends MX_Controller {
 			$AbsentDaysApplied = $this->session->userdata('daysApplied');
 			$to = $this->session->userdata('endDate');
 			$comment = $this->session->userdata('comment');
+<<<<<<< HEAD
 
 			//format to date
 			$to = str_replace("/","",$to);
@@ -349,6 +358,19 @@ class ApproveLeave extends MX_Controller {
                 $humanReadableFromDate = $day."-".$month."-".$year;
             }
 	        //format from date
+=======
+            
+			//FROM DATE
+	        $FromDate = substr($from, 0, strpos($from, " "));
+	        $FromDate = explode("/", $FromDate);
+	        $humanReadableFromDate = $FromDate[1]."-".$FromDate[0]."-".$FromDate[2];
+	        //FROM DATE
+	        //TO DATE
+	        $ToDate = substr($to, 0, strpos($to, " "));
+	        $ToDate = explode("/", $ToDate);
+	        $humanReadableToDate = $ToDate[1]."-".$ToDate[0]."-".$ToDate[2];
+	        //TO DATE
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
 		}else{
 			$humanReadableToDate = 'N/A';
 			$humanReadableFromDate = 'N/A';
@@ -375,6 +397,10 @@ class ApproveLeave extends MX_Controller {
 		$sendMailresp = $this->phpMailerSendMail($FName, $LName, $subject, $finalMessage, $From, $to);
 		
 		$sendMailresp = json_decode($sendMailresp);
+<<<<<<< HEAD
+=======
+		// print_r($sendMailresp);die;
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
 		
 		if($sendMailresp->status == 0){
 			$resp['message'] = "The leave request has been forwarded to the individual responsible. Please wait as we refresh this page.";

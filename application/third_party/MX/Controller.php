@@ -378,6 +378,7 @@ class MX_Controller
 
 
 	//GMAIL for local developement
+
 	// //send Mail
 	// 	public function phpMailerSendMail($FName, $LName, $subject, $Message, $From, $to){
 	// 	//SMTP needs accurate times, and the PHP time zone MUST be set
@@ -491,36 +492,37 @@ class MX_Controller
 		// 0 = off (for production use)
 		// 1 = client messages
 		// 2 = client and server messages
-		$mail->SMTPDebug = 0;
+		$mail->SMTPDebug = 2;
 
 		//Ask for HTML-friendly debug output
 		$mail->Debugoutput = 'html';
 
 		//Set the hostname of the mail server
-		$mail->Host = 'mail.kippra.or.ke';
+
+		// $mail->Host = 'mail.kippra.or.ke';
 		// use
-		// $mail->Host = gethostbyname('smtp.gmail.com');
+		$mail->Host = 'smtp.gmail.com';
 		// if your network does not support SMTP over IPv6
 
 		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-		$mail->Port = 25;
-		// $mail->Port = 465;
+		// $mail->Port = 25;
+		$mail->Port = 465;
 
 		//Set the encryption system to use - ssl (deprecated) or tls
-		$mail->SMTPSecure = 'tsl';
-		// $mail->SMTPSecure = 'ssl';
+		// $mail->SMTPSecure = 'tsl';
+		$mail->SMTPSecure = 'ssl';
 
 		//Whether to use SMTP authentication
-		$mail->SMTPAuth = false;
-		// $mail->SMTPAuth = true;
+		// $mail->SMTPAuth = false;
+		$mail->SMTPAuth = true;
 
 		//Username to use for SMTP authentication - use full email address for gmail
-		$mail->Username = "kipprahr@kippra.or.ke";
-		// $mail->Username = "kippraess@gmail.com";
+		// $mail->Username = "kipprahr@kippra.or.ke";
+		$mail->Username = "kippraess@gmail.com";
 
 		//Password to use for SMTP authentication
-		$mail->Password = "Treasury123";
-		// $mail->Password = "abc123**";
+		// $mail->Password = "Treasury123";
+		$mail->Password = "abc123**";
 
 		//Set who the message is to be sent from
 		$mail->setFrom($From, $FName." ".$LName);
@@ -561,15 +563,100 @@ class MX_Controller
 		//send the message, check for errors
 		if (!$mail->send()) {
 		    // echo "Mailer Error: " . $mail->ErrorInfo;
-		    $resp['message'] = "Mailer Error: " . $mail->ErrorInfo;
+		    // $resp['message'] = "Mailer Error: " . $mail->ErrorInfo;
+		    $resp['message'] = "Error occured whille sending.";
 		    $resp['status'] = 1;	
 		} else {
 		    $resp['message'] = "Mail sent";
 		    $resp['status'] = 0;	
 		}
+
 		return json_encode($resp);
 	}
 	//send Mail
+
+	//GMAIL for local developement
+
+	//FOR USE IN KIPPRA ENVIRONMNET(kippra smtp server)
+	// public function phpMailerSendMail($FName, $LName, $subject, $Message, $From, $to){
+	// 	//SMTP needs accurate times, and the PHP time zone MUST be set
+	// 	//This should be done in your php.ini, but this is how to do it if you don't have access to that
+	// 	date_default_timezone_set('Etc/UTC');
+
+	// 	//Create a new PHPMailer instance
+	// 	$mail = new PHPMailer;
+
+	// 	//Tell PHPMailer to use SMTP
+	// 	$mail->isSMTP();
+
+	// 	//Enable SMTP debugging
+	// 	// 0 = off (for production use)
+	// 	// 1 = client messages
+	// 	// 2 = client and server messages
+	// 	$mail->SMTPDebug = 2;
+
+	// 	//Ask for HTML-friendly debug output
+	// 	$mail->Debugoutput = 'html';
+
+	// 	//Set the hostname of the mail server
+	// 	$mail->Host = 'mail.kippra.or.ke';
+	// 	// use
+	// 	// $mail->Host = gethostbyname('smtp.gmail.com');
+	// 	// if your network does not support SMTP over IPv6
+
+	// 	//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+	// 	$mail->Port = 25;
+	// 	// $mail->Port = 465;
+
+	// 	//Set the encryption system to use - ssl (deprecated) or tls
+	// 	$mail->SMTPSecure = 'tsl';
+	// 	// $mail->SMTPSecure = 'ssl';
+
+	// 	//Whether to use SMTP authentication
+	// 	$mail->SMTPAuth = false;
+	// 	// $mail->SMTPAuth = true;
+
+	// 	//Username to use for SMTP authentication - use full email address for gmail
+	// 	$mail->Username = "kipprahr@kippra.or.ke";
+	// 	// $mail->Username = "kippraess@gmail.com";
+
+	// 	//Password to use for SMTP authentication
+	// 	$mail->Password = "Treasury123";
+	// 	// $mail->Password = "abc123**";
+
+	// 	//Set who the message is to be sent from
+	// 	$mail->setFrom($From, $FName." ".$LName);
+
+	// 	//Set an alternative reply-to address
+	// 	$mail->addReplyTo($From, $FName." ".$LName);
+
+	// 	//Set who the message is to be sent to
+	// 	if( is_array($to) == 1){
+	// 		$approver = $to['approver'];
+	// 		$applier = $to['applier'];
+	// 		$mail->addAddress($applier, 'NAV ESS Support');
+	// 		$mail->AddCC($approver, 'Line Manager');
+	// 	}else{
+	// 		$mail->addAddress($to, 'NAV ESS Support');
+	// 	}
+
+	// 	//Set the subject line
+	// 	$mail->Subject = $subject;
+
+	// 	$mail->msgHTML($Message);
+	// 	//send the message, check for errors
+	// 	if (!$mail->send()) {
+	// 	    // echo "Mailer Error: " . $mail->ErrorInfo;
+	// 	    $resp['message'] = "Mailer Error: " . $mail->ErrorInfo;
+	// 	    // $resp['message'] = "Error occured whille sending.";
+	// 	    $resp['status'] = 1;	
+	// 	} else {
+	// 	    $resp['message'] = "Mail sent";
+	// 	    $resp['status'] = 0;	
+	// 	}
+	// 	return json_encode($resp);
+	// }
+	//FOR USE IN KIPPRA ENVIRONMNET(kippra smtp server)
 
 	//Logout
 	public function logout(){

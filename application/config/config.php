@@ -17,8 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-// $config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/leave';
-$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/leaveLive';
+
+//$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/leave';//Live at KIPPRA
+$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/leaveLive';//Bakasa Development
+// $config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].':8080/leaveLive';//Oscar Development
 
 /*
 |--------------------------------------------------------------------------
@@ -502,5 +504,9 @@ $config['proxy_ips'] = '';
 /*
 	MY CONSTANTS
 */
+
 // define('navInterfaceURL','127.0.0.1:8080/leaveLive/assets/service/sqlServerInterface.php');//development on .31
+
+// define('navInterfaceURL','127.0.0.1:8080/leaveLive/assets/service/sqlServerInterface.php');//Oscar development
+
 define('navInterfaceURL','127.0.0.1/leaveLive/assets/service/sqlServerInterface.php');//live at KIPPRA

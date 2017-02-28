@@ -306,9 +306,27 @@ class ApplyLeave extends MX_Controller {
 
 	public function getHolidaysInMnD(){
 		$holidaysAvailable = $this->getHolidays();
+<<<<<<< HEAD
 		echo $holidaysAvailable;
 		// $holidaysAvailable = json_decode($holidaysAvailable);
 		// print_r($holidaysAvailable[0]->holidayDate);
+=======
+		//echo $holidaysAvailable;
+		$holidaysAvailable = json_decode($holidaysAvailable);
+		$holidays = array();
+		$holidaysContainer = array();
+
+		foreach ($holidaysAvailable as $key => $value) {
+			$holidayName = $value->holidayName;
+			$holidayDate = $value->holidayDate;
+			$holidayYear = $value->year;
+
+			$holidays = array($holidayName,$holidayDate,$holidayYear);
+			array_push($holidaysContainer,$holidays);
+		}
+
+		echo json_encode($holidaysContainer);
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
 	}
 }
 ?>
