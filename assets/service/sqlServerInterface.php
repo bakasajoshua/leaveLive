@@ -648,6 +648,20 @@
 			    $res = "Error: {$e->faultstring}";
 			}
 			echo ($res->validateStartDateResult);
+		}else if($action == "GETAPPROVERSEMAIL"){
+			$approverID = $_POST['firstApprover'];
+			$FinalApprover = $_POST['finalApprover'];
+			
+			$client = new SoapClient($webServiceUrl);
+			try {
+				$res = $client->getLeaveApprovers(array(
+												'firstApprover'=>$approverID,
+												'finalApprover'=>$FinalApprover
+											));
+			} catch (SoapFault $e) {				
+			    $res = "Error: {$e->faultstring}";
+			}
+			echo($res->getLeaveApproversResult);	
 		}else if($action == "GETHOLIDAYS"){
 			$year = $_POST['year'];
 			

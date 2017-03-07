@@ -97,10 +97,12 @@ class ApplyLeave extends MX_Controller {
 			$this->session->set_userdata('returnDate', $returnDate);
 
 			$resp = $this->sendLeaveApplyemail();
+
 			$resp = json_decode($resp);
 			$resp = (array)$resp;
 			
 			if($resp['status'] == 0){
+				// $this->sendEmailNotificationToApprovers($ApproverPersonID,$FinalApproversPersonID);
 				$response['message'] = 'Your application has been submitted';
 				$response['status'] = 0;
 			}else{
@@ -306,11 +308,11 @@ class ApplyLeave extends MX_Controller {
 
 	public function getHolidaysInMnD(){
 		$holidaysAvailable = $this->getHolidays();
-<<<<<<< HEAD
-		echo $holidaysAvailable;
+// <<<<<<< HEAD
+		// echo $holidaysAvailable;
 		// $holidaysAvailable = json_decode($holidaysAvailable);
 		// print_r($holidaysAvailable[0]->holidayDate);
-=======
+// =======
 		//echo $holidaysAvailable;
 		$holidaysAvailable = json_decode($holidaysAvailable);
 		$holidays = array();
@@ -326,7 +328,59 @@ class ApplyLeave extends MX_Controller {
 		}
 
 		echo json_encode($holidaysContainer);
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+	}
+
+	public function sendEmailNotificationToApprovers($id1=null,$id2=null)
+	{
+		$person_ID = $this->session->userdata('PersonID');
+		$firstName = $this->session->userdata('FirstName');
+		$lastName = $this->session->userdata('LastName');
+		$title = $this->session->userdata('Title');
+
+		//Formatting the contents of the email
+		$subject = "Leave application";
+		$emailContent = "<p style=\"\\&quot;font-family:\">Hallo,</p><span style=\"\\&quot;font-family:\">You have received this email following a leave application that awaits your approval.&nbsp;</span><div style=\"\\&quot;font-family:\"><span>The employee details are as below:</span></div>";
+		$emailContent = str_replace('"','',$emailContent);
+		$FName = "KIPPRA ESS";
+		$LName = "User";
+		$Message = "<p>Employee Number: ".$person_ID."</p>
+		<p>Employee Name: ".$firstName."".$lastName."</p>
+		<p>Employee Position: ".$title."</p>
+		Regards,<br/>
+		KIPPRA ESS PORTAL.";
+		$finalEmail = $emailContent.$Message;
+
+		$From = "kipprahr@kippra.or.ke";
+
+		// echo "<pre>";print_r($this->session->all_userdata());die();
+		$curl = curl_init();
+			// Set some options - we are passing in a useragent too here
+			curl_setopt_array($curl, array(
+			    CURLOPT_RETURNTRANSFER => 1,
+			    CURLOPT_URL => navInterfaceURL,
+			    CURLOPT_USERAGENT => 'ESSDP',
+			    CURLOPT_POST => 1,
+			    CURLOPT_POSTFIELDS => array(
+			        'action' => 'GETAPPROVERSEMAIL',
+			        'firstApprover' => $id1,
+			        'finalApprover' => $id2
+			    )
+			));
+			// Send the request & save response to $resp
+			$result = curl_exec($curl);
+			
+			// Close request to clear up some resources
+			curl_close($curl);
+			// echo "<pre>";print_r($result);die();
+			$result = json_decode($result);
+			foreach ($result as $key => $value) {
+				$data[] = $value->email;
+				$resp = $this->phpMailerSendMail($FName, $LName, $subject, $finalEmail, $From, $value->email);
+			}
+			
+		
+		return $resp;
 	}
 }
 ?>

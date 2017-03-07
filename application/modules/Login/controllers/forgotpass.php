@@ -43,6 +43,7 @@ class forgotpass extends MX_Controller {
 			}else{
 				$resp = $this->sendpassresetmail($tempPass,$userEmail);
 				$resp = json_decode($resp);
+				// echo "<pre>";print_r($resp->status);die();
 				$status = $resp->status;
 				if($status == 0){
 					$response['message'] = "A reset code has been sent to your email. Kindly Check your email account.";
@@ -89,13 +90,13 @@ class forgotpass extends MX_Controller {
 		return $result;
 	}
 
-	public function sendpassresetmail($tempPass,$userEmail){
+	public function sendpassresetmail($tempPass=null,$userEmail=null){
 		$tempPass = $tempPass;
 		$email = $userEmail;
 		// echo $tempPass." ".$email;
 
 		$emailContent = $this->getSpecificEmailTemplate(2);//get registration email from DB
-
+		
 		$emailContent = json_decode($emailContent);
 		foreach ($emailContent as $key => $value) {
 		    $row = "";
@@ -116,7 +117,7 @@ class forgotpass extends MX_Controller {
 		<i>If this email was wrongly sent to you please ignore it.</i><br/>
 		Regards,<br/>
 		KIPPRA ESS PORTAL.";
-
+		echo "<pre>";print_r($emailContent);die();
 		$finalEmail = $emailContent.$Message;
 
 		$From = "kipprahr@kippra.or.ke";

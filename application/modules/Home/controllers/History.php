@@ -12,6 +12,8 @@ class History extends MX_Controller {
 		$data['userLeaveApplications']= $this->getUserLeaveHistory();
 		$data['pendingRequests'] = $this->getPendingRequests();
 		$data['content_view'] = "Home/history_v";
+
+		// echo "<pre>";print_r($data);die();
 		$this->load->view('template/template_v.php',$data);
 
 	}

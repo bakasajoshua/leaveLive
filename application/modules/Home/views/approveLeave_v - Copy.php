@@ -8,9 +8,7 @@
     $finalRow = '';
     foreach ($pendingRequests as $key => $value) {
         $row = "";
-        $value = (array)$value;
-        //Formatting the name
-        $humanReadableName = $value['FirstName']." ".$value['MiddleName']." ".$value['LastName'];                                                
+        $value = (array)$value;                                                    
         //FROM DATE
         $FromDate = substr($value['FromDate'], 0, strpos($value['FromDate'], " "));
         $FromDate = explode("/", $FromDate);
@@ -22,9 +20,6 @@
         $humanReadableToDate = $ToDate[1]."-".$ToDate[0]."-".$ToDate[2];
         //format from date
         //TO DATE
-
-        //Total days applied
-        $totalDays = $value['AbsentDaysApplied'];
 
         $finalApproversID = $value['FinalApproversID'];
         $linemanagerApproversID = $value['ApproversID'];
@@ -130,21 +125,21 @@
                                               <th>Emp. No.</th>
                                               <th>Name</th>
                                               <th>Leave Type</th>
-<!-- <<<<<<< HEAD -->
+<<<<<<< HEAD
                                               <!-- <th>Days Entitled</th> -->
-                                              <!-- <th>Days Applied</th>
+                                              <th>Days Applied</th>
                                               <th>Start Date</th>
-                                              <th>End Date</th> -->
-<!-- ======= -->
+                                              <th>End Date</th>
+=======
                                               <th>Days Applied</th>
                                               <th>Start Date (ddMMYY)</th>
                                               <th>End Date (ddMMYY)</th>
-<!-- >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb -->
+>>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
                                               <th>Status</th>
                                               <th>Action</th>
                                             </tr>
                                         </thead>
-<!-- <<<<<<< HEAD -->
+<<<<<<< HEAD
                                         <!-- <tbody> -->
                                             <?php
                                                 // $personID = $this->session->userdata('PersonID');
@@ -263,81 +258,81 @@
                                         <!-- </tbody>  -->
                                         <!-- <tbody> -->
                                             <?php 
-                                                // $personID = $this->session->userdata('PersonID');
-                                                // $i=0;
-                                                // $k=0;
-                                                // foreach ($pendingRequests as $key => $value) {
-                                                //     $row = "";
+                                                $personID = $this->session->userdata('PersonID');
+                                                $i=0;
+                                                $k=0;
+                                                foreach ($pendingRequests as $key => $value) {
+                                                    $row = "";
                                                     
-                                                //     $value = (array)$value;                                                    
-                                                //     //FROM DATE
-                                                //     $FromDate = explode(" ", $value['FromDate']);
-                                                //     $FromDate = $FromDate[0];
-                                                //     $humanReadableToDate = str_replace("/","-",$FromDate);
-                                                //     //FROM DATE
-                                                //     //TO DATE
-                                                //     $ToDate = explode(" ", $value['ToDate']);
-                                                //     $ToDate = $ToDate[0];
-                                                //     $humanReadableToDate = str_replace("/","-",$ToDate);
-                                                //     //TO DATE
+                                                    $value = (array)$value;                                                    
+                                                    //FROM DATE
+                                                    $FromDate = explode(" ", $value['FromDate']);
+                                                    $FromDate = $FromDate[0];
+                                                    $humanReadableToDate = str_replace("/","-",$FromDate);
+                                                    //FROM DATE
+                                                    //TO DATE
+                                                    $ToDate = explode(" ", $value['ToDate']);
+                                                    $ToDate = $ToDate[0];
+                                                    $humanReadableToDate = str_replace("/","-",$ToDate);
+                                                    //TO DATE
 
-                                                //     $finalApproversID = $value['FinalApproversID'];
-                                                //     $linemanagerApproversID = $value['ApproversID'];
-                                                //     $Leavestatus = $value['status'];
+                                                    $finalApproversID = $value['FinalApproversID'];
+                                                    $linemanagerApproversID = $value['ApproversID'];
+                                                    $Leavestatus = $value['status'];
 
-                                                //     // if(strcasecmp($personID, $finalApproversID) == 0){
-                                                //     //     if($Leavestatus == 'PENDING FINAL APPROVAL'){
-                                                //     //         $i++;
-                                                //     //         $row = "<tr>";
-                                                //     //         $row .= "<td>".$i."</td>";
-                                                //     //         $row .= "<td>".$value['RequestID']."</td>";
-                                                //     //         $row .= "<td class='empNO'>".$value['ApplicantsPersonID']."</td>";
-                                                //     //         $row .= "<td>".$value['FirstName']." ".$value['MiddleName']." ".$value['LastName']."</td>";
-                                                //     //         $row .= "<td>".$value['AbsenceCode']."</td>";
-                                                //     //         // $row .= "<td>".$value['AbsentDaysEntitlement']."</td>";
-                                                //     //         $row .= "<td>".$value['AbsentDaysApplied']."</td>";
-                                                //     //         $row .= "<td>".$humanReadableFromDate."</td>";
-                                                //     //         $row .= "<td>".$humanReadableToDate."</td>";
-                                                //     //         $row .= "<td class='leaveComment'>".$value['status']."</td>";
-                                                //     //         $row .= '<td onclick="actOnRequest('.$i.')" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor:pointer;"><center><i class="fa fa-gavel"></i></center></td>';
-                                                //     //         $row .= "</tr>";
-                                                //     //     }
-                                                //     // }else if(strcasecmp($personID, $linemanagerApproversID) == 0){
-                                                //     //     if($Leavestatus == 'LEAVE RECEIVED'){
-                                                //     //         $k++;
-                                                //     //         $row = "<tr>";
-                                                //     //         $row .= "<td>".$k."</td>";
-                                                //     //         $row .= "<td>".$value['RequestID']."</td>";
-                                                //     //         $row .= "<td class='empNO'>".$value['ApplicantsPersonID']."</td>";
-                                                //     //         $row .= "<td>".$value['FirstName']." ".$value['MiddleName']." ".$value['LastName']."</td>";
-                                                //     //         $row .= "<td>".$value['AbsenceCode']."</td>";
-                                                //     //         // $row .= "<td>".$value['AbsentDaysEntitlement']."</td>";
-                                                //     //         $row .= "<td>".$value['AbsentDaysApplied']."</td>";
-                                                //     //         $row .= "<td>".$humanReadableFromDate."</td>";
-                                                //     //         $row .= "<td>".$humanReadableToDate."</td>";
-                                                //     //         $row .= "<td class='leaveComment'>".$value['status']."</td>";
-                                                //     //         $row .= '<td onclick="actOnRequest('.$k.')" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor:pointer;"><center><i class="fa fa-gavel"></i></center></td>';
-                                                //     //         $row .= "</tr>";
-                                                //     //     }
-                                                //     // }
-                                                //     $i++;
-                                                //     $row = "<tr>";
-                                                //     $row .= "<td>".$i."</td>";
-                                                //     $row .= "<td>".$value['RequestID']."</td>";
-                                                //     $row .= "<td class='empNO'>".$value['ApplicantsPersonID']."</td>";
-                                                //     $row .= "<td>".$value['FirstName']." ".$value['MiddleName']." ".$value['LastName']."</td>";
-                                                //     $row .= "<td>".$value['AbsenceCode']."</td>";
-                                                //     // $row .= "<td>".$value['AbsentDaysEntitlement']."</td>";
-                                                //     $row .= "<td>".$value['AbsentDaysApplied']."</td>";
-                                                //     $row .= "<td>".$humanReadableFromDate."</td>";
-                                                //     $row .= "<td>".$humanReadableToDate."</td>";
-                                                //     $row .= "<td class='leaveComment'>".$value['status']."</td>";
-                                                //     $row .= '<td onclick="actOnRequest('.$i.')" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor:pointer;"><center><i class="fa fa-gavel"></i></center></td>';
-                                                //     $row .= "</tr>";
+                                                    // if(strcasecmp($personID, $finalApproversID) == 0){
+                                                    //     if($Leavestatus == 'PENDING FINAL APPROVAL'){
+                                                    //         $i++;
+                                                    //         $row = "<tr>";
+                                                    //         $row .= "<td>".$i."</td>";
+                                                    //         $row .= "<td>".$value['RequestID']."</td>";
+                                                    //         $row .= "<td class='empNO'>".$value['ApplicantsPersonID']."</td>";
+                                                    //         $row .= "<td>".$value['FirstName']." ".$value['MiddleName']." ".$value['LastName']."</td>";
+                                                    //         $row .= "<td>".$value['AbsenceCode']."</td>";
+                                                    //         // $row .= "<td>".$value['AbsentDaysEntitlement']."</td>";
+                                                    //         $row .= "<td>".$value['AbsentDaysApplied']."</td>";
+                                                    //         $row .= "<td>".$humanReadableFromDate."</td>";
+                                                    //         $row .= "<td>".$humanReadableToDate."</td>";
+                                                    //         $row .= "<td class='leaveComment'>".$value['status']."</td>";
+                                                    //         $row .= '<td onclick="actOnRequest('.$i.')" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor:pointer;"><center><i class="fa fa-gavel"></i></center></td>';
+                                                    //         $row .= "</tr>";
+                                                    //     }
+                                                    // }else if(strcasecmp($personID, $linemanagerApproversID) == 0){
+                                                    //     if($Leavestatus == 'LEAVE RECEIVED'){
+                                                    //         $k++;
+                                                    //         $row = "<tr>";
+                                                    //         $row .= "<td>".$k."</td>";
+                                                    //         $row .= "<td>".$value['RequestID']."</td>";
+                                                    //         $row .= "<td class='empNO'>".$value['ApplicantsPersonID']."</td>";
+                                                    //         $row .= "<td>".$value['FirstName']." ".$value['MiddleName']." ".$value['LastName']."</td>";
+                                                    //         $row .= "<td>".$value['AbsenceCode']."</td>";
+                                                    //         // $row .= "<td>".$value['AbsentDaysEntitlement']."</td>";
+                                                    //         $row .= "<td>".$value['AbsentDaysApplied']."</td>";
+                                                    //         $row .= "<td>".$humanReadableFromDate."</td>";
+                                                    //         $row .= "<td>".$humanReadableToDate."</td>";
+                                                    //         $row .= "<td class='leaveComment'>".$value['status']."</td>";
+                                                    //         $row .= '<td onclick="actOnRequest('.$k.')" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor:pointer;"><center><i class="fa fa-gavel"></i></center></td>';
+                                                    //         $row .= "</tr>";
+                                                    //     }
+                                                    // }
+                                                    $i++;
+                                                    $row = "<tr>";
+                                                    $row .= "<td>".$i."</td>";
+                                                    $row .= "<td>".$value['RequestID']."</td>";
+                                                    $row .= "<td class='empNO'>".$value['ApplicantsPersonID']."</td>";
+                                                    $row .= "<td>".$value['FirstName']." ".$value['MiddleName']." ".$value['LastName']."</td>";
+                                                    $row .= "<td>".$value['AbsenceCode']."</td>";
+                                                    // $row .= "<td>".$value['AbsentDaysEntitlement']."</td>";
+                                                    $row .= "<td>".$value['AbsentDaysApplied']."</td>";
+                                                    $row .= "<td>".$humanReadableFromDate."</td>";
+                                                    $row .= "<td>".$humanReadableToDate."</td>";
+                                                    $row .= "<td class='leaveComment'>".$value['status']."</td>";
+                                                    $row .= '<td onclick="actOnRequest('.$i.')" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor:pointer;"><center><i class="fa fa-gavel"></i></center></td>';
+                                                    $row .= "</tr>";
                                                     
-                                                //     echo $row;
+                                                    echo $row;
                                                     
-                                                // }
+                                                }
                                             ?>
 <!-- ======= -->
                                         <tbody>
@@ -360,10 +355,10 @@
                                                     <h4 class="modal-title" id="myModalLabel2">Action</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p id="empName">Name: <?= @$humanReadableName;?></p>
-                                                    <p id="leaveStartDate">Start Date: <?= @$humanReadableFromDate;?></p>
-                                                    <p id="leaveEndate">End Date: <?= @$humanReadableToDate;?></p>
-                                                    <p id="totalDays">Total Days: <?= @$totalDays; ?></p> 
+                                                    <!-- <p id="empName">Name:</p>
+                                                    <p id="leaveStartDate">Start Date:</p>
+                                                    <p id="leaveEndate">End Date:</p>
+                                                    <p id="totalDays">Total Days:</p> 
                                                     <h4>Provide Comment(optional)</h4>
                                                         <div class="alert alert-danger" role="alert" id="loginerrorBox">
                                                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

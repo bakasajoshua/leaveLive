@@ -27,15 +27,15 @@
                                         </thead>
                                         <tbody>
                                            <?php
-<<<<<<< HEAD
-                                                function split_on($string, $num) {
-                                                    $length = strlen($string);
-                                                    $output[0] = substr($string, 0, $num);
-                                                    $output[1] = substr($string, $num, $length );
-                                                    return $output;
-                                                }
-=======
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// <<<<<<< HEAD
+//                                                 function split_on($string, $num) {
+//                                                     $length = strlen($string);
+//                                                     $output[0] = substr($string, 0, $num);
+//                                                     $output[1] = substr($string, $num, $length );
+//                                                     return $output;
+//                                                 }
+// =======
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
                                                 $i = 0;
                                                 $userLeaveApplications = json_decode($userLeaveApplications);
                                                 // print_r($userLeaveApplications);die;

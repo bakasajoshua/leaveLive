@@ -298,10 +298,10 @@
     <script>
       $(document).ready(function() {
         $(".overlay").hide();
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
-=======
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// =======
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
         //dashboard
         $getEntitlementsURL = "<?php echo base_url('home/home/getEntitlements'); ?>";
         //dashboard
@@ -428,111 +428,111 @@
                 $workingDays = 0;
                 $leavedays = $leavDaysArray['totalDays']+1;
                 $handleHolidayFallingOnWeekend = 0;
-<<<<<<< HEAD
-                $holidayCounter = 0;
-                while($k < $leavedays){
-                  //startDate broken down
-                  var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
-                  var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
-                  var y = newdate.getFullYear();
-                  //startDate broken down
+// <<<<<<< HEAD
+//                 $holidayCounter = 0;
+//                 while($k < $leavedays){
+//                   //startDate broken down
+//                   var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
+//                   var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
+//                   var y = newdate.getFullYear();
+//                   //startDate broken down
 
-                  //put the broken up date together to get the day you applied. monday-sunday
-                  $t = new Date(y,(mm-1),dd);
-                  $dayOfWeek = $t.getDay();
-                  $dayOfWeek = parseInt($dayOfWeek);
-                  //put the broken up date together to get the day you applied. monday-sunday
-                  // console.log('Day of week sun-mon '+$dayOfWeek);
-                  if($dayOfWeek == 0 || $dayOfWeek == 6){
-                    $holidaysWithinRange = 0;
-                    $startDate = $("#startDate").val();
-                    $endDate = $("#endDate").val();
+//                   //put the broken up date together to get the day you applied. monday-sunday
+//                   $t = new Date(y,(mm-1),dd);
+//                   $dayOfWeek = $t.getDay();
+//                   $dayOfWeek = parseInt($dayOfWeek);
+//                   //put the broken up date together to get the day you applied. monday-sunday
+//                   // console.log('Day of week sun-mon '+$dayOfWeek);
+//                   if($dayOfWeek == 0 || $dayOfWeek == 6){
+//                     $holidaysWithinRange = 0;
+//                     $startDate = $("#startDate").val();
+//                     $endDate = $("#endDate").val();
 
-                    $startDateArray = $startDate.split("/");
-                    $endDateArray = $endDate.split("/");
+//                     $startDateArray = $startDate.split("/");
+//                     $endDateArray = $endDate.split("/");
 
-                    $currentYear = new Date().getFullYear();
-                    $kl = 0;
-                    while($kl < $holidays.length){
-                          //loop through holidays to check if any falls within range
-                          $holidayDate = $holidays[$kl]['holidayDate'];//compare this to the start date end date range provided
-                          $holidayDateArray = $holidayDate.split("-");
+//                     $currentYear = new Date().getFullYear();
+//                     $kl = 0;
+//                     while($kl < $holidays.length){
+//                           //loop through holidays to check if any falls within range
+//                           $holidayDate = $holidays[$kl]['holidayDate'];//compare this to the start date end date range provided
+//                           $holidayDateArray = $holidayDate.split("-");
 
-                          // console.log("Start Date broken down: Year "+$startDateArray[2]+" Month "+$startDateArray[0]+" Day "+$startDateArray[1]);
-                          // console.log("End Date broken down: Year "+$endDateArray[2]+" Month "+$endDateArray[0]+" Day "+$endDateArray[1]);
-                          // console.log("Check year broken down: Year "+$currentYear+" Month "+$holidayDateArray[1]+" Day "+$holidayDateArray[0]);
+//                           // console.log("Start Date broken down: Year "+$startDateArray[2]+" Month "+$startDateArray[0]+" Day "+$startDateArray[1]);
+//                           // console.log("End Date broken down: Year "+$endDateArray[2]+" Month "+$endDateArray[0]+" Day "+$endDateArray[1]);
+//                           // console.log("Check year broken down: Year "+$currentYear+" Month "+$holidayDateArray[1]+" Day "+$holidayDateArray[0]);
                           
-                          var from = new Date($startDateArray[2], parseInt($startDateArray[0])-1, $startDateArray[1]);  // -1 because months are from 0 to 11
-                          var to   = new Date($endDateArray[2], parseInt($endDateArray[0])-1, $endDateArray[1]);
-                          var check = new Date($currentYear, parseInt($holidayDateArray[1])-1, $holidayDateArray[0]);
+//                           var from = new Date($startDateArray[2], parseInt($startDateArray[0])-1, $startDateArray[1]);  // -1 because months are from 0 to 11
+//                           var to   = new Date($endDateArray[2], parseInt($endDateArray[0])-1, $endDateArray[1]);
+//                           var check = new Date($currentYear, parseInt($holidayDateArray[1])-1, $holidayDateArray[0]);
 
-                          // console.log("From "+from+" To "+to+" Check "+check);
-                          $holidayCounter = 0;
-                          if(check >= from && check <= to){
-                              //if it falls on range increase days buy 1
-                              $holidayCounter++;                              
-                              // console.log("falls in range");
-                              // console.log("From: "+from);
-                              // console.log("To: "+to);
-                              // console.log("Check: "+check);
-                          }else{
-                              //if it doesn't fall in range DO NOTHINg
-                              // console.log("not in range");
-                              // console.log("From: "+from);
-                              // console.log("To: "+to);
-                              // console.log("Check: "+check);
-                          }
-                          $kl++;
-                          console.log("Length of holidays "+$holidays.length);
-                    }
-                      $newdayvalue = parseInt(newdate.getDate()) + parseInt((1));
-                      console.log("Current value of holidayCOunter "+$handleHolidayFallingOnWeekend+" increase counter by "+$holidayCounter);
-                      $handleHolidayFallingOnWeekend = $holidayCounter + $handleHolidayFallingOnWeekend;
-                      console.log("$handleHolidayFallingOnWeekend new value"+$handleHolidayFallingOnWeekend);
-                      newdate.setDate($newdayvalue);  
-                  }else{
-                    //increase day by one
-                    $newdayvalue = parseInt(newdate.getDate()) + parseInt((1));
-                    newdate.setDate($newdayvalue);  
-                    $workingDays++;
-                    // console.log("Working Days "+$workingDays+" Day of week "+$workingDays);
-                    // console.log(newdate);
-                    //increase day by one
-                  }
-                  //startDate broken down
-                  var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
-                  var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
-                  var y = newdate.getFullYear();
-                  //startDate broken down
-                  // console.log("New Date after adding 1 "+mm+"/"+dd+"/"+y);
-                  $k++;
-                }
+//                           // console.log("From "+from+" To "+to+" Check "+check);
+//                           $holidayCounter = 0;
+//                           if(check >= from && check <= to){
+//                               //if it falls on range increase days buy 1
+//                               $holidayCounter++;                              
+//                               // console.log("falls in range");
+//                               // console.log("From: "+from);
+//                               // console.log("To: "+to);
+//                               // console.log("Check: "+check);
+//                           }else{
+//                               //if it doesn't fall in range DO NOTHINg
+//                               // console.log("not in range");
+//                               // console.log("From: "+from);
+//                               // console.log("To: "+to);
+//                               // console.log("Check: "+check);
+//                           }
+//                           $kl++;
+//                           console.log("Length of holidays "+$holidays.length);
+//                     }
+//                       $newdayvalue = parseInt(newdate.getDate()) + parseInt((1));
+//                       console.log("Current value of holidayCOunter "+$handleHolidayFallingOnWeekend+" increase counter by "+$holidayCounter);
+//                       $handleHolidayFallingOnWeekend = $holidayCounter + $handleHolidayFallingOnWeekend;
+//                       console.log("$handleHolidayFallingOnWeekend new value"+$handleHolidayFallingOnWeekend);
+//                       newdate.setDate($newdayvalue);  
+//                   }else{
+//                     //increase day by one
+//                     $newdayvalue = parseInt(newdate.getDate()) + parseInt((1));
+//                     newdate.setDate($newdayvalue);  
+//                     $workingDays++;
+//                     // console.log("Working Days "+$workingDays+" Day of week "+$workingDays);
+//                     // console.log(newdate);
+//                     //increase day by one
+//                   }
+//                   //startDate broken down
+//                   var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
+//                   var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
+//                   var y = newdate.getFullYear();
+//                   //startDate broken down
+//                   // console.log("New Date after adding 1 "+mm+"/"+dd+"/"+y);
+//                   $k++;
+//                 }
 
-                $daysEntitled = $("#daysAvaliable").val();
-                if($workingDays > $daysEntitled){
-                    $message = "You have "+$daysEntitled+" leave days only.";
-                }else{  
-                   //display working days
-                    // $("#daysToApply").val($workingDays);
-                    //display working days
+//                 $daysEntitled = $("#daysAvaliable").val();
+//                 if($workingDays > $daysEntitled){
+//                     $message = "You have "+$daysEntitled+" leave days only.";
+//                 }else{  
+//                    //display working days
+//                     // $("#daysToApply").val($workingDays);
+//                     //display working days
 
-                    //get expected return date
+//                     //get expected return date
                     
-                    // $expectedReturnDate = getDateFromStartDateLeaveDays($('#startDate').val(),$leavDaysArray['totalDays']);
-                    // $expectedReturnDate = $expectedReturnDate.split("k");
-                    // $("#returnDate").val($expectedReturnDate[0]);
-                    // //get expected return date
+//                     // $expectedReturnDate = getDateFromStartDateLeaveDays($('#startDate').val(),$leavDaysArray['totalDays']);
+//                     // $expectedReturnDate = $expectedReturnDate.split("k");
+//                     // $("#returnDate").val($expectedReturnDate[0]);
+//                     // //get expected return date
 
-                    // //compute remaining days
-                    // $daysApplied = parseInt($("#daysToApply").val());
-                    // $availableDays = parseInt($("#daysAvaliable").val());
-                    // console.log($daysApplied+" "+$availableDays);
-                    // $remaingDays = $availableDays - $daysApplied;
-                    // console.log($daysApplied);
+//                     // //compute remaining days
+//                     // $daysApplied = parseInt($("#daysToApply").val());
+//                     // $availableDays = parseInt($("#daysAvaliable").val());
+//                     // console.log($daysApplied+" "+$availableDays);
+//                     // $remaingDays = $availableDays - $daysApplied;
+//                     // console.log($daysApplied);
 
-                    // $("#daysRemaining").val($remaingDays);
-                    //compute remaining days
-=======
+//                     // $("#daysRemaining").val($remaingDays);
+//                     //compute remaining days
+// =======
                 $kl = 0;
                 $holidayCounter = 0;
                 $holidaysWithinRange = 0;
@@ -586,7 +586,7 @@
                 if($workingDays > $daysEntitled){
                     $message = "You have "+$daysEntitled+" leave days only.";
                 }else{  
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
                     $message = "OK";
                 }
                 $workingdays = $workingDays+parseInt($handleHolidayFallingOnWeekend);
@@ -594,10 +594,10 @@
                 return '{"workingDays":'+$workingDays+',"message":"'+$message+'","handleHolidayFallingOnWeekend":"'+$handleHolidayFallingOnWeekend+'"}';
           }
             //gets the holidays set in the system
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
-=======
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// =======
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
             window.getHolidays = function(){
                 $.ajax({
                   url:$getHolidays,

@@ -2377,30 +2377,30 @@ $(document).ready(function(){
             $("#applyLeave").prop('disabled', false);
           }
       }else{
-<<<<<<< HEAD
-          $('#daysToApply').attr('max', $leavedays);
-          $('#daysToApply').attr('min', parseInt(0));
-       // $("#daysToApply").prop('disabled', false);
-=======
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// <<<<<<< HEAD
+//           $('#daysToApply').attr('max', $leavedays);
+//           $('#daysToApply').attr('min', parseInt(0));
+//        // $("#daysToApply").prop('disabled', false);
+// =======
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
       }
   });
   //auto populates the number of days field during leave application
 
   window.getNumberOfHolidaysWithinDateRange = function(){
-<<<<<<< HEAD
-        //ADJUSTS FOR HOLIDAYS
-    //get the holidays
-    //check to see if holidays fall within the date range applied
-    //do necessary adjustements
-    $holidaysWithinRange = 0;
-=======
+// <<<<<<< HEAD
+//         //ADJUSTS FOR HOLIDAYS
+//     //get the holidays
+//     //check to see if holidays fall within the date range applied
+//     //do necessary adjustements
+//     $holidaysWithinRange = 0;
+// =======
     //ADJUSTS FOR HOLIDAYS
     //get the holidays
     //check to see if holidays fall within the date range applied
     //do necessary adjustements
     $holidayCounter = 0;
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
     $startDate = $("#startDate").val();
     $endDate = $("#endDate").val();
 
@@ -2408,99 +2408,99 @@ $(document).ready(function(){
     $endDateArray = $endDate.split("/");
 
     $currentYear = new Date().getFullYear();
-<<<<<<< HEAD
-    $k = 0;
-    while($k < $holidays.length){
-        //loop through holidays to check if any falls within range
-        $holidayDate = $holidays[$k]['holidayDate'];//compare this to the start date end date range provided
-        $holidayDateArray = $holidayDate.split("-");
+// <<<<<<< HEAD
+//     $k = 0;
+//     while($k < $holidays.length){
+//         //loop through holidays to check if any falls within range
+//         $holidayDate = $holidays[$k]['holidayDate'];//compare this to the start date end date range provided
+//         $holidayDateArray = $holidayDate.split("-");
 
-        // console.log("Start Date broken down: Year "+$startDateArray[2]+" Month "+$startDateArray[0]+" Day "+$startDateArray[1]);
-        // console.log("End Date broken down: Year "+$endDateArray[2]+" Month "+$endDateArray[0]+" Day "+$endDateArray[1]);
-        // console.log("Check year broken down: Year "+$currentYear+" Month "+$holidayDateArray[1]+" Day "+$holidayDateArray[0]);
-        //FromDate >=  @startDate AND ToDate <=  @endDate
-        var from = new Date($startDateArray[2], parseInt($startDateArray[0])-1, $startDateArray[1]);  // -1 because months are from 0 to 11
-        var to   = new Date($endDateArray[2], parseInt($endDateArray[0])-1, $endDateArray[1]);
-        var check = new Date($currentYear, parseInt($holidayDateArray[1])-1, $holidayDateArray[0]);
+//         // console.log("Start Date broken down: Year "+$startDateArray[2]+" Month "+$startDateArray[0]+" Day "+$startDateArray[1]);
+//         // console.log("End Date broken down: Year "+$endDateArray[2]+" Month "+$endDateArray[0]+" Day "+$endDateArray[1]);
+//         // console.log("Check year broken down: Year "+$currentYear+" Month "+$holidayDateArray[1]+" Day "+$holidayDateArray[0]);
+//         //FromDate >=  @startDate AND ToDate <=  @endDate
+//         var from = new Date($startDateArray[2], parseInt($startDateArray[0])-1, $startDateArray[1]);  // -1 because months are from 0 to 11
+//         var to   = new Date($endDateArray[2], parseInt($endDateArray[0])-1, $endDateArray[1]);
+//         var check = new Date($currentYear, parseInt($holidayDateArray[1])-1, $holidayDateArray[0]);
 
-        // console.log("From "+from+" To "+to+" Check "+check);
-        //check if this datae falls on weekedn, if not it is okay increament else don't increament
-        $dayOfWeek = check.getDay();
-        $dayOfWeek = parseInt($dayOfWeek);
-        if((check > from && check < to) && ($dayOfWeek == 6 || $dayOfWeek == 0)){
-            //if it falls on range increase days buy 1
-            console.log("falls in range");
-            // console.log("From: "+from);
-            // console.log("To: "+to);
-            // console.log("Check: "+check);
-            // console.log("DOW "+$dayOfWeek);
-            $holidaysWithinRange++;
-        }else{
-            //if it doesn't fall in range DO NOTHINg
-            console.log("not in range");
-            // console.log("From: "+from);
-            // console.log("To: "+to);
-            // console.log("Check: "+check);
-        }
+//         // console.log("From "+from+" To "+to+" Check "+check);
+//         //check if this datae falls on weekedn, if not it is okay increament else don't increament
+//         $dayOfWeek = check.getDay();
+//         $dayOfWeek = parseInt($dayOfWeek);
+//         if((check > from && check < to) && ($dayOfWeek == 6 || $dayOfWeek == 0)){
+//             //if it falls on range increase days buy 1
+//             console.log("falls in range");
+//             // console.log("From: "+from);
+//             // console.log("To: "+to);
+//             // console.log("Check: "+check);
+//             // console.log("DOW "+$dayOfWeek);
+//             $holidaysWithinRange++;
+//         }else{
+//             //if it doesn't fall in range DO NOTHINg
+//             console.log("not in range");
+//             // console.log("From: "+from);
+//             // console.log("To: "+to);
+//             // console.log("Check: "+check);
+//         }
 
-        // if($holidayDate >= $startDateDnM && $holidayDate <= $endDateDnM){//if the 
-        //   
-        // }else{
-        //   
-        // }
-        $k++;
-    }
-    //ADJUSTS FOR HOLIDAYS
-    return $holidaysWithinRange;
-  }
-  //gets the holidays set in the system
-  window.getHolidays = function(){
-      $.ajax({
-        url:$getHolidays,
-        data:{},
-        type:'POST',
-        success:function($resp,status){
-          console.log($resp);
-          $holidays = JSON.parse($resp);
-          // console.log($holidays[0]['holidayName']);
-          return $holidays;
-        }
-      });
-  }   
-  getHolidays();//this is called to pre-popuate the holidays variable
-  //gets the holidays set in the system
-  function getReturnDateIncludingWeekends($startDate,$leavedays){
-      //compute return date
-      var date = new Date($startDate);
-      var newdate = new Date(date);
+//         // if($holidayDate >= $startDateDnM && $holidayDate <= $endDateDnM){//if the 
+//         //   
+//         // }else{
+//         //   
+//         // }
+//         $k++;
+//     }
+//     //ADJUSTS FOR HOLIDAYS
+//     return $holidaysWithinRange;
+//   }
+//   //gets the holidays set in the system
+//   window.getHolidays = function(){
+//       $.ajax({
+//         url:$getHolidays,
+//         data:{},
+//         type:'POST',
+//         success:function($resp,status){
+//           console.log($resp);
+//           $holidays = JSON.parse($resp);
+//           // console.log($holidays[0]['holidayName']);
+//           return $holidays;
+//         }
+//       });
+//   }   
+//   getHolidays();//this is called to pre-popuate the holidays variable
+//   //gets the holidays set in the system
+//   function getReturnDateIncludingWeekends($startDate,$leavedays){
+//       //compute return date
+//       var date = new Date($startDate);
+//       var newdate = new Date(date);
 
-      $newdayvalue = parseInt((newdate.getDate()) + parseInt($leavedays));
-      newdate.setDate($newdayvalue);
+//       $newdayvalue = parseInt((newdate.getDate()) + parseInt($leavedays));
+//       newdate.setDate($newdayvalue);
 
-      var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
-      var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
-      var y = newdate.getFullYear();
+//       var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
+//       var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
+//       var y = newdate.getFullYear();
 
-      var returnDate = mm + '/' + dd + '/' + y;
-      //compute return date
+//       var returnDate = mm + '/' + dd + '/' + y;
+//       //compute return date
 
-      //compute end date
-      var date = new Date($startDate);
-      var newdate = new Date(date);
+//       //compute end date
+//       var date = new Date($startDate);
+//       var newdate = new Date(date);
 
-      $newdayvalue = parseInt((newdate.getDate()) + parseInt($leavedays)-1);
-      newdate.setDate($newdayvalue);
+//       $newdayvalue = parseInt((newdate.getDate()) + parseInt($leavedays)-1);
+//       newdate.setDate($newdayvalue);
 
-      var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
-      var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
-      var y = newdate.getFullYear();
+//       var dd = ("0" + newdate.getDate()).slice(-2);;//newdate.getDate();
+//       var mm = ("0" + (newdate.getMonth() + 1)).slice(-2);
+//       var y = newdate.getFullYear();
 
-      var leaveEndDate = mm + '/' + dd + '/' + y;
-      //compute end date
+//       var leaveEndDate = mm + '/' + dd + '/' + y;
+//       //compute end date
 
-     // console.log('getReturnDateIncludingWeekends '+returnDate+'leave end date'+leaveEndDate);
-      return returnDate+'k'+leaveEndDate;
-=======
+//      // console.log('getReturnDateIncludingWeekends '+returnDate+'leave end date'+leaveEndDate);
+//       return returnDate+'k'+leaveEndDate;
+// =======
     $kl = 0;
     // while($k < $holidays.length){
     //     //loop through holidays to check if any falls within range
@@ -2616,7 +2616,7 @@ $(document).ready(function(){
 
 	    // console.log('getReturnDateIncludingWeekends '+returnDate+'leave end date'+leaveEndDate);
 	    return returnDate+'k'+leaveEndDate;
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+// >>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
   }
 
   function getDateFromStartDateLeaveDays($startDate,$leavedays){
@@ -3183,10 +3183,7 @@ $(document).ready(function(){
 
 			                  	console.log($leaveDetails);
                   				if($message === "OK"){//the days applied are less than the leave days available thus OK
-<<<<<<< HEAD
-			                      
-=======
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+
 			                      //compute remaining days
 			                    
 			                      //get the number of holidays between the dates selected
@@ -3244,11 +3241,7 @@ $(document).ready(function(){
                 $leaveDetails = JSON.parse($leaveDetails);
                 $message = $leaveDetails['message'];
                 $workingDays = $leaveDetails['workingDays'];
-<<<<<<< HEAD
-                console.log($leaveDetails);
-=======
-                
->>>>>>> 80aa3777f0b9ec647507a3e6a2992d48460fd2fb
+
                 if($message === "OK"){
                     //compute remaining days
                     
